@@ -8,36 +8,41 @@ namespace EmpWageComp
 {
     internal class UC1
     {
+        public const int IsPartTime = 1;
+        public const int IsFullTime = 2;
+        public const int IsAbsent = 0;
+
         static void Main(string[] args)
         {
-            CheckEmployeePresentOrAbsent();
-
-
-        }
-        public static void CheckEmployeePresentOrAbsent()
-        {
-            Console.WriteLine("Welcome to Employee Pay Roll");
-            Random r = new Random();
-            int wagePerHour = 20;
-            int fullDayhour = 8;
+            int TotalWage = 0;
+            int WagePerHour = 20;
             int PartTimeHour = 4;
-            int totalWage = 0;
-            int number = r.Next(0, 3);
-            switch (number)
+            int FullTimeHour = 8;
+            int NumberOfWorkingDays = 20;
+
+            for (int i = 0; i < NumberOfWorkingDays; i++)
             {
-                case 0:
-                    Console.WriteLine("Employee is Absent");
-                    break;
-                case 1:
-                    Console.WriteLine("Employee is Present");
-                    totalWage = wagePerHour * fullDayhour;
-                    break;
-                case 2:
-                    Console.WriteLine("Employee is Present and PartTime Employee");
-                    totalWage = wagePerHour * PartTimeHour;
-                    break;
+                Random random = new Random();
+                int number = random.Next(0, 3);
+
+                switch (number)
+                {
+                    case IsAbsent:
+                        Console.WriteLine("Employee is Absent");
+                        break;
+                    case IsFullTime:
+                        Console.WriteLine("Employee is fulltime");
+                        TotalWage = TotalWage + WagePerHour * FullTimeHour;
+                        break;
+                    case IsPartTime:
+                        Console.WriteLine("Employee is Present and PartTime Employee");
+                        TotalWage = TotalWage + WagePerHour * PartTimeHour;
+                        break;
+                }
+                Console.WriteLine("Employee's total wage is:" + TotalWage);
+
+
             }
-            Console.WriteLine("Employee's total wage is:" + totalWage);
 
         }
     }
