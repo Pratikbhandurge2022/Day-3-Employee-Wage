@@ -23,28 +23,22 @@ namespace EmpWageComp
             int PartTimeHour = 4;
             int totalWage = 0;
             int number = r.Next(0, 3);
-            if (number == 0)
+            switch (number)
             {
-                Console.WriteLine("Employee is Absent");
-
-
-            }
-            else if (number == 1)
-            {
-                Console.WriteLine("Employee is Present");
-                totalWage = wagePerHour * fullDayhour;
-
-
-            }
-            else
-            {
-                Console.WriteLine("Employee is Present and PartTime Employee");
-                totalWage = wagePerHour * PartTimeHour;
-
-
-
+                case 0:
+                    Console.WriteLine("Employee is Absent");
+                    break;
+                case 1:
+                    Console.WriteLine("Employee is Present");
+                    totalWage = wagePerHour * fullDayhour;
+                    break;
+                case 2:
+                    Console.WriteLine("Employee is Present and PartTime Employee");
+                    totalWage = wagePerHour * PartTimeHour;
+                    break;
             }
             Console.WriteLine("Employee's total wage is:" + totalWage);
+
         }
     }
 }
